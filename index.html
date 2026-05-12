@@ -186,25 +186,57 @@
     body.facilitator .stage-wrap{
       padding-right:calc(var(--panel-w) + 34px);
       padding-left:18px;
-      padding-bottom:98px;
+      padding-bottom:104px;
+      align-items:center;
     }
     body.facilitator .slide{
-      width:min(1000px, calc(96vw - var(--panel-w)));
-      padding:44px 50px;
-      border-radius:28px;
+      width:min(920px, calc(96vw - var(--panel-w)));
+      height:min(calc(100vh - 150px), calc((96vw - var(--panel-w)) * 0.54));
+      aspect-ratio:16/9;
+      padding:32px 38px;
+      border-radius:26px;
     }
-    body.facilitator h1{font-size:42px}
-    body.facilitator h2{font-size:36px}
-    body.facilitator h3{font-size:25px}
-    body.facilitator p,.body.facilitator li{font-size:22px}
-    body.facilitator .card p, body.facilitator .card li{font-size:18px}
-    body.facilitator .scene{height:240px}
-    body.facilitator .scene .emoji{font-size:56px}
-    body.facilitator .scene .label{font-size:22px}
-    body.facilitator th, body.facilitator td{font-size:17px;padding:12px}
-    body.facilitator .timeline-row > div{font-size:14px;padding:10px}
-    body.facilitator .timer-big{font-size:48px}
-    body.facilitator .big-quote{font-size:34px}
+    body.facilitator .slide-inner{max-height:100%;overflow:hidden}
+    body.facilitator .kicker{font-size:16px;margin-bottom:8px}
+    body.facilitator h1{font-size:36px;line-height:1.05;margin-bottom:12px}
+    body.facilitator h2{font-size:30px;line-height:1.1;margin-bottom:14px}
+    body.facilitator h3{font-size:20px;line-height:1.15;margin-bottom:8px}
+    body.facilitator p{font-size:17px;line-height:1.32}
+    body.facilitator .subtitle{font-size:22px}
+    body.facilitator .card{padding:14px;border-radius:16px}
+    body.facilitator .card h3{font-size:18px;margin-bottom:6px}
+    body.facilitator .card p, body.facilitator .card li{font-size:14px;line-height:1.25}
+    body.facilitator ul.clean{gap:8px}
+    body.facilitator ul.clean li{font-size:18px;line-height:1.25;gap:8px}
+    body.facilitator .bullet-dot{width:8px;height:8px;margin-top:8px}
+    body.facilitator .activity-box{padding:16px;border-radius:18px;margin-top:14px}
+    body.facilitator .scene{height:190px;border-radius:18px;padding:14px}
+    body.facilitator .scene .emoji{font-size:46px;margin-bottom:8px}
+    body.facilitator .scene .label{font-size:18px}
+    body.facilitator .scene .caption{font-size:13px;margin-top:4px}
+    body.facilitator .split-scene{gap:16px;margin-top:14px}
+    body.facilitator .grid{gap:12px}
+    body.facilitator .arrow-flow{gap:12px}
+    body.facilitator .arrow-card:not(:last-child):after{font-size:28px;right:-14px}
+    body.facilitator .number-badge{width:34px;height:34px;border-radius:10px;font-size:19px;margin-bottom:8px}
+    body.facilitator th, body.facilitator td{font-size:14px;padding:9px}
+    body.facilitator .timeline-row{margin-bottom:6px;border-radius:12px}
+    body.facilitator .timeline-row > div{font-size:12px;padding:7px}
+    body.facilitator .timer-big{font-size:40px}
+    body.facilitator .big-quote{font-size:28px}
+    body.facilitator .quote-mark{font-size:64px}
+    body.facilitator .pill{font-size:13px;padding:5px 9px}
+    body.facilitator .metric-row{gap:8px;margin-bottom:12px}
+    body.facilitator .metric{padding:10px;border-radius:14px}
+    body.facilitator .metric .num{font-size:24px}
+    body.facilitator .metric .label{font-size:11px}
+    body.facilitator .bar{grid-template-columns:70px 1fr 44px;font-size:12px;gap:7px}
+    body.facilitator .bar-track{height:13px}
+    body.facilitator .line-chart{height:125px;border-radius:14px;padding:8px}
+    body.facilitator .takeaway{font-size:15px;padding:9px;border-radius:13px;gap:9px}
+    body.facilitator .takeaway .n{width:27px;height:27px;border-radius:9px}
+    body.facilitator .input-card{max-height:24vh}
+    body.facilitator .answer-chip{font-size:13px;padding:6px 8px;border-radius:10px}
 
     .overlay-message{
       position:absolute;left:50%;bottom:52px;transform:translateX(-50%);
@@ -292,9 +324,9 @@
       width:100%;border:0;border-radius:14px;padding:11px;text-align:center;font-weight:850;background:#fff;color:#0f172a
     }
 
-    .note-block{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:14px;margin-bottom:12px}
-    .note-block h4{margin:0 0 8px;font-size:13px;color:#93c5fd;text-transform:uppercase;letter-spacing:.07em}
-    .note-block p,.note-block li{font-size:15px;line-height:1.45;color:#e5e7eb}
+    .note-block{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:12px;margin-bottom:10px}
+    .note-block h4{margin:0 0 6px;font-size:12px;color:#93c5fd;text-transform:uppercase;letter-spacing:.07em}
+    .note-block p,.note-block li{font-size:14px;line-height:1.38;color:#e5e7eb}
     .note-block ul{margin:0;padding-left:20px}
     .note-block label{font-size:13px;color:#bfdbfe;font-weight:800;display:block;margin-bottom:6px}
     .live-input,.slide-specific-input{
@@ -441,6 +473,31 @@
     </div>
 
     <div class="note-block">
+      <h4>Objective</h4>
+      <p id="noteObjective"></p>
+    </div>
+
+    <div class="note-block">
+      <h4>Script / Cue</h4>
+      <p id="noteScript"></p>
+    </div>
+
+    <div class="note-block">
+      <h4>Expected Answers</h4>
+      <ul id="noteExpected"></ul>
+    </div>
+
+    <div class="note-block">
+      <h4>Transition</h4>
+      <p id="noteTransition"></p>
+    </div>
+
+    <div class="note-block">
+      <h4>Timing</h4>
+      <p id="noteTiming"></p>
+    </div>
+
+    <div class="note-block">
       <h4>Live Message to Screen</h4>
       <textarea id="liveMessageInput" class="live-input" placeholder="พิมพ์ข้อความให้ขึ้นหน้าจอสอน เช่น เหลือเวลา 3 นาที / ขอให้แต่ละกลุ่มเลือก 1 Insight"></textarea>
       <div class="control-grid two" style="margin-top:10px">
@@ -484,27 +541,6 @@
         <button class="btn ghost" id="showTimerBtn">Show timer</button>
         <button class="btn ghost" id="hideTimerBtn">Hide timer</button>
       </div>
-    </div>
-
-    <div class="note-block">
-      <h4>Timing</h4>
-      <p id="noteTiming"></p>
-    </div>
-    <div class="note-block">
-      <h4>Objective</h4>
-      <p id="noteObjective"></p>
-    </div>
-    <div class="note-block">
-      <h4>Script / Cue</h4>
-      <p id="noteScript"></p>
-    </div>
-    <div class="note-block">
-      <h4>Expected Answers</h4>
-      <ul id="noteExpected"></ul>
-    </div>
-    <div class="note-block">
-      <h4>Transition</h4>
-      <p id="noteTransition"></p>
     </div>
   </aside>
 
